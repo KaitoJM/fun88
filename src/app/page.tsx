@@ -1,9 +1,8 @@
+import GamesFilter from "@/components/modules/games/GamesFilter";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { slider_data } from "@/data/slider.data";
 
@@ -27,6 +26,7 @@ export default function Home() {
           ¡FELICIDADES artxxxxipa! GANADOR DESTACADO
         </p>
       </div>
+      <GamesFilter />
     </div>
   );
 }

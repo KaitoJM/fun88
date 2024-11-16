@@ -1,3 +1,3 @@
-export type Slider = {
+export interface Slider {
   image: string;
-};
+}
