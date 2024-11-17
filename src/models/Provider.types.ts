@@ -1,5 +1,5 @@
 export interface Provider {
-  id: Number;
+  id: number;
   name: string;
   logo: string;
 }

@@ -20,7 +20,7 @@ export default function Home() {
   });
 
   const [games, setGames] = useState<Game[]>([]);
-  const [loading, setLoading] = useState<Boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   function handleFilterChange(filtersEffect: FilterGame) {
     setFilter(filtersEffect);

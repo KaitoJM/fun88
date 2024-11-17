@@ -2,8 +2,6 @@ import { navigation_data } from "@/data/navigation.data";
 import Link from "next/link";
 
 export default function Menu() {
-  const navigationItems = navigation_data;
-
   return (
     <div className="bg-white">
       <ul className="flex items-center">

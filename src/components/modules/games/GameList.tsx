@@ -1,18 +1,18 @@
 "use client";
 import { Game } from "@/models/Game.types";
 import { Star } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface GameListProps {
   data?: Game[];
 }
 
 export default function GameList({ data = [] }: GameListProps) {
-  const [favorites, setFavorites] = useState<Number[]>([]);
+  const [favorites, setFavorites] = useState<number[]>([]);
 
   useEffect(() => {
     const favorites_str = localStorage.getItem("game_favorites");
-    const favs: Number[] = favorites_str
+    const favs: number[] = favorites_str
       ? favorites_str?.split(",").map((item) => parseInt(item))
       : [];
     if (favs) {
@@ -26,7 +26,7 @@ export default function GameList({ data = [] }: GameListProps) {
     }
   }, [favorites]);
 
-  function toogleFavorites(id: Number) {
+  function toogleFavorites(id: number) {
     setFavorites((prevFavorites) => {
       const updatedFavorites = [...prevFavorites];
       const index = updatedFavorites.indexOf(id);

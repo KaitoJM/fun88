@@ -7,7 +7,6 @@ import {
 import { category_data } from "@/data/categories.data";
 import { Search, Filter } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import {
   Drawer,
@@ -36,7 +35,7 @@ const GamesFilter: React.FC<ChildComponentProps> = ({ onFilterChange }) => {
     setSearchOpen(!search_open);
   }
 
-  function toggleProvider(id: Number) {
+  function toggleProvider(id: number) {
     let selected_providers = [...filters.providers];
 
     if (filters.providers?.includes(id)) {

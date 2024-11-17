@@ -1,13 +1,13 @@
 export type FilterGame = {
   search: string;
-  category_id: Number;
-  providers: Number[];
+  category_id: number;
+  providers: number[];
 };
 
 export interface Game {
-  id: Number;
+  id: number;
   name: string;
-  category_id: Number;
-  provider_id: Number;
+  category_id: number;
+  provider_id: number;
   banner: string;
 }
