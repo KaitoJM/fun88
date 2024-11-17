@@ -33,7 +33,7 @@ export default function RootLayout({
         <header className="fixed w-full top-0 left-0 z-10">
           <Header />
         </header>
-        <div className="z-0 mt-[50px] p-3">{children}</div>
+        <div className="z-0 my-[50px] p-3">{children}</div>
         <footer className="fixed w-full bottom-0 left-0 z-10">
           <Menu />
         </footer>

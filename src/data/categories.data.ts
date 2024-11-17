@@ -12,7 +12,7 @@ import {
 
 export const category_data: Categories[] = [
   {
-    id: 1,
+    id: 0,
     name: "Start",
     icon: Flame,
   },

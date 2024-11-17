@@ -51,7 +51,6 @@ const GamesFilter: React.FC<ChildComponentProps> = ({ onFilterChange }) => {
   }
 
   useEffect(() => {
-    console.log("Count has changed:");
     onFilterChange(filters);
   }, [filters]);
 

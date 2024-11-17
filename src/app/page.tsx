@@ -1,13 +1,16 @@
 "use client";
+import GameList from "@/components/modules/games/GameList";
+import GameLoading from "@/components/modules/games/GameLoading";
 import GamesFilter from "@/components/modules/games/GamesFilter";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { getGamesData } from "@/data/games.data";
 import { slider_data } from "@/data/slider.data";
-import { FilterGame } from "@/models/Game.types";
-import { useState } from "react";
+import { FilterGame, Game } from "@/models/Game.types";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [filters, setFilter] = useState<FilterGame>({
@@ -16,9 +19,20 @@ export default function Home() {
     providers: [],
   });
 
+  const [games, setGames] = useState<Game[]>([]);
+  const [loading, setLoading] = useState<Boolean>(false);
+
   function handleFilterChange(filtersEffect: FilterGame) {
     setFilter(filtersEffect);
   }
+
+  useEffect(() => {
+    setLoading(true);
+    getGamesData(filters).then((data) => {
+      setGames(data || []);
+      setLoading(false);
+    });
+  }, [filters]);
 
   return (
     <div>
@@ -40,6 +54,15 @@ export default function Home() {
         </p>
       </div>
       <GamesFilter onFilterChange={handleFilterChange} />
+      {games.length ? (
+        loading ? (
+          <GameLoading />
+        ) : (
+          <GameList data={games} />
+        )
+      ) : (
+        ""
+      )}
     </div>
   );
 }
