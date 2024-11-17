@@ -440,6 +440,4 @@ export async function getGamesData(filters: FilterGame): Promise<Game[]> {
       resolve(data);
     }, 2000);
   });
-
-  //   return data;
 }
