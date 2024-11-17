@@ -21,7 +21,6 @@ export default function GameList({ data = [] }: GameListProps) {
   }, []);
 
   useEffect(() => {
-    console.log(favorites);
     if (favorites.length > 0) {
       localStorage.setItem("game_favorites", favorites.join(","));
     }

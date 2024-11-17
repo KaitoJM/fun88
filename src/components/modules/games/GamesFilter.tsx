@@ -55,7 +55,7 @@ const GamesFilter: React.FC<ChildComponentProps> = ({ onFilterChange }) => {
   }, [filters]);
 
   return (
-    <div className="flex flex-col gap-1 max-w-full overflow-hidden">
+    <div className="flex flex-col gap-1 max-w-screen overflow-hidden sticky top-[50px] z-20 bg-[#ffffffc7] p-4 -mx-3 w-screen backdrop-blur-xl">
       <div className="flex gap-2 items-center">
         <button
           className={
