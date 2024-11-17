@@ -8,7 +8,7 @@ import { category_data } from "@/data/categories.data";
 import { Search, Filter } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Drawer,
   DrawerContent,
@@ -18,16 +18,15 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { provider_data } from "@/data/provider.data";
+import { FilterGame } from "@/models/Game.types";
 
-export default function GamesFilter() {
-  type Filter = {
-    search: string;
-    category_id: Number;
-    providers: Number[];
-  };
+interface ChildComponentProps {
+  onFilterChange: (value: FilterGame) => void;
+}
 
+const GamesFilter: React.FC<ChildComponentProps> = ({ onFilterChange }) => {
   const [search_open, setSearchOpen] = useState(false);
-  const [filters, setFilter] = useState<Filter>({
+  const [filters, setFilter] = useState<FilterGame>({
     search: "",
     category_id: 0,
     providers: [],
@@ -38,16 +37,23 @@ export default function GamesFilter() {
   }
 
   function toggleProvider(id: Number) {
-    let selected_providers: Number[] = filters?.providers;
+    let selected_providers = [...filters.providers];
 
     if (filters.providers?.includes(id)) {
-      selected_providers.splice(selected_providers.indexOf(id), 1);
+      selected_providers = selected_providers.filter(
+        (providerId) => providerId !== id
+      );
     } else {
       selected_providers.push(id);
     }
 
     setFilter({ ...filters, providers: selected_providers });
   }
+
+  useEffect(() => {
+    console.log("Count has changed:");
+    onFilterChange(filters);
+  }, [filters]);
 
   return (
     <div className="flex flex-col gap-1 max-w-full overflow-hidden">
@@ -94,7 +100,7 @@ export default function GamesFilter() {
           </Carousel>
         </div>
       </div>
-      {search_open ? (
+      {search_open && (
         <div className="flex items-center gap-2 p-1">
           <Input
             placeholder="Search Games"
@@ -120,10 +126,10 @@ export default function GamesFilter() {
                     >
                       <div
                         className={
-                          "w-full bg-white text-main flex items-center justify-center border rounded-lg px-2 " +
+                          "w-full text-main flex items-center justify-center border rounded-lg px-2 " +
                           (filters.providers.includes(provider.id)
                             ? "bg-[#00a6ff] text-white"
-                            : "")
+                            : "bg-white")
                         }
                       >
                         <img
@@ -139,9 +145,9 @@ export default function GamesFilter() {
             </DrawerContent>
           </Drawer>
         </div>
-      ) : (
-        ""
       )}
     </div>
   );
-}
+};
+
+export default GamesFilter;

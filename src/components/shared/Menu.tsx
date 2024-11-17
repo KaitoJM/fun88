@@ -7,9 +7,9 @@ export default function Menu() {
   return (
     <div className="bg-white">
       <ul className="flex items-center">
-        {navigation_data.map((item) => {
+        {navigation_data.map((item, indx) => {
           return (
-            <li className="flex-1">
+            <li className="flex-1" key={`menu-item-${indx}`}>
               <Link href="/" className="flex flex-col gap-2 items-center p-2">
                 <div>
                   <img src={item.icon} alt="" className="w-6" />
